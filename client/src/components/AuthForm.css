@@ -1,0 +1,11 @@
+.ui input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ui form {
+    width: 270px;
+}
+.logForm {
+    width: 400;
+}
