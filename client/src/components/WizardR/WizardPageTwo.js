@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Form, Button} from 'semantic-ui-react'
+import {Form, Button, Label} from 'semantic-ui-react'
 import validate from './validate'
 import renderField from './renderField'
 import renderSelector from './renderSelector'
@@ -27,7 +27,8 @@ return (
       <div>
       <Field name="dbName" type="text" component={renderField} placeholder='Database Name' />      
       </div>
-      <Field name="dbUser" type="text" component={renderField} placeholder='Databse User' />      
+      <Field name="dbUser" type="text" component={renderField} placeholder='Databse User' />
+      <Label>{this.props.dbType}</Label>     
       <Field name="dbPass" type="password" component={renderField} placeholder='User Password' />      
       <div>
         <Button type="button" className="previous" onClick={previousPage}>

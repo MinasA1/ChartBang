@@ -1,4 +1,4 @@
-const baseUrl = 'https://hazel-api.herokuapp.com/api/v1/auth/';
+
 const devUrl = 'http://localhost:3000/api/v1/'
 export const userLogout = () => ({
   type: "USER_LOGOUT"

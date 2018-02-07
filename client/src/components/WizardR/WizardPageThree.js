@@ -1,8 +1,9 @@
 import React, {Component}from 'react'
 import {Field, reduxForm} from 'redux-form'
+import {Form} from 'semantic-ui-react'
 import validate from './validate'
 import renderSelector from './renderSelector'
-const dbTypes = ['Mysql', 'Postgres']
+
 
 class WizardFormThirdPage extends Component {
   constructor(props) {
@@ -12,17 +13,13 @@ class WizardFormThirdPage extends Component {
     const schema = localStorage.getItem('schema')
   }
   render () {
-   const {handleSubmit, pristine, previousPage, submitting} = props
+   const {handleSubmit, pristine, previousPage, submitting} = this.props
 
   return (
     <Form onSubmit={handleSubmit}>
       <div>
-        <label>Favorite Color</label>
-        <Field name="" component={renderSelector} values={}/>
-      </div>
+    
       
-          />
-        </div>
       </div>
       <div>
         <label>Notes</label>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Segment, Container, Input, Button, Form} from 'semantic-ui-react';
 import './AuthForm.css'
 class AuthForm extends Component {
-  static defaultProps = {
+  static defaultProps = { 
     onAuth() {},
     heading: "Welcome",
     buttonText: "Log in",
