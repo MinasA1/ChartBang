@@ -33,5 +33,11 @@ let UserSchema = new Schema({
 UserSchema.methods.comparePassword = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
+
+UserSchema.methods.addDb = async function(db) {
+  await this.databases.push(db)
+  this.save()
+};
+
 const User = mongoose.model('User', UserSchema);
 module.exports = User;

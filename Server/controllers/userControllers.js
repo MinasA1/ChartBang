@@ -23,15 +23,12 @@ exports.sign_up = function(req, res) {
 exports.sign_in = function(req, res) {
   User.findOne({
     email: req.body.email
-  }, function(err, user) {
+  }).populate('databases').exec(function(err, user){
     if (err) throw err;
     if (!user || !user.comparePassword(req.body.password)) {
-      console.log(user, req.body.password);
-      console.log(req.headers);
       return res.status(401).json({ message: 'Authentication failed. Invalid user or password.' });
     }
-    console.log(req.headers);
-    token = jwt.sign({ email: user.email, name: user.name, _id: user._id }, signingKey);
+      token = jwt.sign({ email: user.email, name: user.name, _id: user._id }, signingKey);
     let options = {
       httpOnly: true,
       sign: true,
@@ -39,9 +36,11 @@ exports.sign_in = function(req, res) {
       path: '/',
       domain: 'localhost'
     };
+      console.log(user);
+      user.password = undefined;
       res.cookie('access_token', token, options);
       res.cookie('user', req.body.email, { path: '/'});
-    return res.json({message: 'Authentication Success'});
+    return res.json(user);
   });
 };
 
@@ -70,18 +69,14 @@ exports.delete = function(req, res) {
   });
 };
 
-exports.all = function(req, res) {
-  User.find({}, function (err, u) {
-    if (err) {
-      console.log(err);
-    } else {
-    let users = {};
-    u.forEach((user) => {
-      user['password'] = undefined;
-      users[user._id] = user;
-    });
-    res.send(users);
-    console.log("USERS SENT");
-      }
-  });
+exports.all = async function(req, res) {
+  const user = await User.find()
+  user.map(v => v.password = undefined)
+  res.json(user)
 };
+
+exports.findUser = async (req, res) => {
+  const user = await User.findById(req.params.id)
+  console.log(user.databases)
+  res.json(user)
+}

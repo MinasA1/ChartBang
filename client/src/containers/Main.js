@@ -7,13 +7,11 @@ import Homepage from '../components/Homepage';
 import Dashboard from '../components/Dashboard';
 import {Container} from 'semantic-ui-react';
 
+
 class Main extends Component {
   constructor(props) {
     super(props);
     this.handleNewChart = this.handleNewChart.bind(this);
-    this.state = {
-      wizard: false
-    }
   }
 
   componentDidMount() {
@@ -34,7 +32,8 @@ class Main extends Component {
       handleSignIn,
       handleSignUp,
       handledbSubmit,
-      history
+      history,
+      wizard
     } = this.props;
     return (
         <Switch>
@@ -56,13 +55,14 @@ class Main extends Component {
               {...props}
             />
           )} />
+          />
           <Route
             exact path='/Dashboard'
             render={(props) => (
               <Dashboard
+                wizard={wizard}
                 user={user}
                 onCredentials={(dbOptions) => handledbSubmit(dbOptions).then(() => console.log('SubmitedCred'))}
-      
                 {...props}
                 />
             )}
@@ -75,7 +75,9 @@ class Main extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  authErrorMessage: state.errorMessage
+  authErrorMessage: state.errorMessage,
+  wizard: state.form.wizard
+
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

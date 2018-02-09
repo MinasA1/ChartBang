@@ -22,7 +22,7 @@ let u = getUser();
 
 if (u) {
   console.log(u);
- // store.dispatch(authenticateUser(u));
+  store.dispatch(authenticateUser(u));
 }
 
 const ChartBang = () => (

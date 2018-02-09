@@ -7,7 +7,7 @@ import renderSelector from './renderSelector'
 const dbTypes = ['mysql', 'postgres']
 
 const WizardFormFirstPage = props => {
-  const { handleSubmit } = props;
+  const { handleSubmit, wizard } = props;
   return (
     <Container style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>
       <Form onSubmit={handleSubmit}>

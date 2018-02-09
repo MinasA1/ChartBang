@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form, Select} from 'semantic-ui-react'
 
-const renderSelector = ({ input, values,label, meta: { touched, error } }) => (
+const renderSelector = ({ input, values, label, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>
     <select {...input} control='select'>

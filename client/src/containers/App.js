@@ -4,12 +4,11 @@ import {withRouter} from 'react-router-dom';
 import * as actions from '../actions';
 import Main from './Main';
 import Navbar from '../components/Navbar';
-import Wizard from '../components/Wizard/Wizard';
 
 const App = ({
   user,
   authErrorMessage,
-  onLogout
+  onLogout,
 }) => (
   <div>
     <Navbar

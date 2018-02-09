@@ -36,5 +36,10 @@ let DatabaseSchema =  new  Schema({
     }]
 });
 
+DatabaseSchema.methods.addUser = async function(user) {
+    await this.user.push(user)
+    this.save()
+};
+
 const Database = mongoose.model('Database', DatabaseSchema);
 module.exports = Database;
