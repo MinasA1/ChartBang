@@ -5,9 +5,11 @@ let { userHandlers, dbHandlers } = require("../controllers");
 
 router.route('/users')
   .get(userHandlers.verifyUser, userHandlers.all)
-  .delete(userHandlers.verifyUser, userHandlers.delete);
+  .delete(userHandlers.verifyUser, userHandlers.delete)
+
 router.route('/users/:id')
   .get(userHandlers.findUser)
+
 router.route('/auth/sign_up')
   .post(userHandlers.sign_up);
 
