@@ -16,7 +16,8 @@ exports.sign_up = function(req, res) {
         message: err.errmsg
       });
     }
-    return res.json({ message: 'User creation Success!' });
+    user.password = undefined
+    return res.json(user);
   });
 };
 
@@ -47,14 +48,8 @@ exports.sign_in = function(req, res) {
 exports.verifyUser = function(req, res, next) {
   console.log(req.headers);
   if (req.cookies['access_token'] && req.cookies['access_token'] === token) {
-    console.log(req.cookies);
-    console.log('Correct token');
     next();
   } else {
-    console.log(req.headers.cookie, "IAM HEADERS COOKIE")
-    console.log(req.cookies, "COOKIES")
-    console.log(req.cookies['access_token'], " COOKIE");
-    console.log(token, " TOKEN")
     return res.status(401).json({ message: 'Unauthorized user!' });
   }
 };

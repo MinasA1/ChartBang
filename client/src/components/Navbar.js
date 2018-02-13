@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import { Dropdown, Icon, Menu, Segment, Button } from 'semantic-ui-react';
+import ModalScrollingExample from './modal'
 
 const Navbar = props => {
   const {user, onLogout} = props;
   return (
-    <Menu fluid inverted>
+    <Menu fluid inverted size='huge'>
       <Menu.Item  as={Link} to='/'>
         <Icon name='home' />
       </Menu.Item>
@@ -34,6 +35,7 @@ const Navbar = props => {
         :
         <div />
       }
+      
       <Menu.Menu position='right'>
         {user ?
           <Menu.Item as={Link} to='/Dashboard'><Icon name='computer'/></Menu.Item>

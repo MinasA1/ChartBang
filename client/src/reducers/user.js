@@ -21,14 +21,12 @@ export const getUser = () => {
   }
 };
 
-
 const user = (state=null, action) => {
   switch(action.type) {
     case "USER_LOGOUT":
       clearUser();
       return null;
     case "AUTHENTICATE_USER":
-      console.log(action.user, 'Iam THE ACTION');
       setUser(action.user);
       return {...action.user};
     default:

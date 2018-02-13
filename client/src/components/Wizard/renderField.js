@@ -1,14 +1,14 @@
 import React from 'react'
-import {Input} from 'semantic-ui-react'
+import {Form, Input} from 'semantic-ui-react'
 
-const renderField = ({ input, label, placeholder, type, meta: { touched, error } }) => (
-  <div>
+const renderField = ({ input, label, placeholder,size, type, meta: { touched, error } }) => (
+  <Form.Field>
     <label>{label}</label>  
     <div>
-      <Input {...input} placeholder={placeholder} type={type} />
+      <Input {...input} placeholder={placeholder} type={type} size={size} />
       {touched && error && <span>{error}</span>}
     </div>
-  </div>
+  </Form.Field>
 )
 
 export default renderField

@@ -5,17 +5,17 @@ const Sequelize = require('sequelize')
 
 
 async function saveDb(dbInfo, user) {
-    try {
+
+    db = await Database.find({name: dbInfo.name})
+    console.log(db)
+    if (!db.lenght) {
         let newDB = new Database(dbInfo)
         await newDB.addUser(user)
-        newDB.save(function (err, db) {
-            if (err) throw err
-            user.addDb(db)
-        })
-
-    }
-    catch (err) {
-        console.log(err)
+        await newDB.save()
+        await user.addDb(newDB)
+        console.log(newDB, user)
+    } else {
+        console.log('DB exists')
     }
 }
 

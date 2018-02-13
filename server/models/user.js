@@ -35,7 +35,7 @@ UserSchema.methods.comparePassword = function(password) {
 };
 
 UserSchema.methods.addDb = async function(db) {
-  await this.databases.push(db)
+  await this.databases.push(db._id)
   this.save()
 };
 
