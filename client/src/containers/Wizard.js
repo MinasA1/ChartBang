@@ -7,6 +7,7 @@ import WizardFirst from '../components/Wizard/WizardPageOne';
 import WizardSecond from '../components/Wizard/WizardPageTwo';
 import WizardThird from '../components/Wizard/WizardPageThree';
 import Steps from '../components/Wizard/Steps'
+import data from '../reducers/data';
 
 class Wizard extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class Wizard extends Component {
 
   render() {
     const {handledbSubmit, onSubmit, nextPage, prevPage, readDB} = this.props
-    const {page, user, values, checked, dbType, conn} = this.props
+    const {page, user, values, checked, dbType, conn, schema} = this.props
       if (!user.databases.lenght) {
        return ( <div>
          <Steps page={page}/>
@@ -36,6 +37,7 @@ class Wizard extends Component {
           />}
         {page === 3 &&
           <WizardThird
+            schema={schema}
             prevPage={prevPage}
             nextPage={nextPage}
             onSubmit={onSubmit}
@@ -51,6 +53,7 @@ const selector = formValueSelector('wizard')
 const mapStateToProps = state => {
   const { checked, dbType, conn } = selector(state, 'checked', 'dbType')
   return ({
+    schema: state.data,
     user: state.user,
     page: state.page,
     checked,

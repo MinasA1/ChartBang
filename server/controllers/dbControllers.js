@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const SeqAuto = require('sequelize-auto');
-const { Database, User } = require('../models');
+const {Database, User} = require('../models');
 const Sequelize = require('sequelize')
 
 
@@ -22,6 +22,7 @@ async function saveDb(dbInfo, user) {
 
 
 exports.schema = async function (req, res) {
+    console.log(req.body)
     auto = getSchema(req.body)
     auto.run(async function (err) {
         if (err) {
@@ -33,28 +34,28 @@ exports.schema = async function (req, res) {
             email: req.cookies['user']
         })
         saveDb(req.body, user)
+        return res.json(schemaToJSON(auto.tables))  
     })
-    schema = schemaToJSON(auto.tables);
-    return res.json(schema);
 }
 
 function getSchema(db) {
+    console.log(db,'from db')
     let auto = new SeqAuto(db.dbName, db.dbUser, db.dbPass, {
         host: db.dbHost,
         dialect: db.dbType,
         schema: db.dbSchema,
-        directory: false,
-        timestamps: false
+        directory: false
     })
-
     return auto
 }
 
 function schemaToJSON(tables) {
+    console.log(tables, 'schemaTOJSON')
     let schema = {};
     Object.keys(tables).forEach((key) => {
         schema[key] = Object.keys(tables[key]);
     });
+    console.log(schema)
     return schema
 }
 

@@ -33,7 +33,8 @@ class Main extends Component {
       handleSignUp,
       handledbSubmit,
       history,
-      wizard
+      toggleSidebar,
+      visible
     } = this.props;
     return (
         <Switch>
@@ -60,9 +61,10 @@ class Main extends Component {
             exact path='/Dashboard'
             render={(props) => (
               <Dashboard
-                wizard={wizard}
+                toggleSidebar={toggleSidebar}
                 user={user}
                 onCredentials={(dbOptions) => handledbSubmit(dbOptions).then(() => console.log('SubmitedCred'))}
+                visible={visible}
                 {...props}
                 />
             )}
@@ -75,6 +77,7 @@ class Main extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
+  visible: state.sidebar,
   authErrorMessage: state.errorMessage,
   wizard: state.form.wizard
 
@@ -83,7 +86,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   handleSignIn(authData) { return dispatch(actions.signIn(authData)); },
   handleSignUp(authData) { return dispatch(actions.signUp(authData)); },
-  handledbSubmit(dbOptions) {return dispatch(actions.submitDb(dbOptions));}
+  handledbSubmit(dbOptions) {return dispatch(actions.submitDb(dbOptions));},
+  toggleSidebar() {return dispatch(actions.toggleSidebar())}  
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

@@ -10,17 +10,14 @@ import 'react-dropdown/style.css'
 class WizardFormThirdPage extends Component {
   constructor(props) {
     super(props)
-    this.logwiz = this.logwiz.bind(this)
+    //this.logwiz = this.logwiz.bind(this)
     this.renderer = this.renderer.bind(this)  
-    this.state ={
-      schema: JSON.parse(localStorage.getItem('schema'))
-    }
   }
   componentDidMount(){
     //Object.entries(loadSchema())
     //const schema = localStorage.getItem('schema')
   }
-
+/* 
   logwiz(){
    for (let i in this.state.schema) {
         console.log(i)
@@ -29,15 +26,16 @@ class WizardFormThirdPage extends Component {
         }
       }
    }
-  renderer() {
+    */
+    renderer() {
     let rows = []
     
-    for (let i in this.state.schema) {
+    for (let i in this.props.schema) {
       let group = {}
       group['type'] = 'group'
       group['name'] = i
       group['items'] = []
-      for (let j of this.state.schema[i]){
+      for (let j of this.props.schema[i]){
         let item = {}
         item['value'] = j
         item['label'] = j
@@ -50,7 +48,7 @@ class WizardFormThirdPage extends Component {
   }
 
   render () {
-    const {handleSubmit, pristine, previousPage, submitting} = this.props
+    const {handleSubmit, pristine, prevPage, submitting} = this.props
     const options = this.renderer()
   return (
     
@@ -66,7 +64,7 @@ class WizardFormThirdPage extends Component {
       
       </div>
       <div>
-        <Button type="button" className="previous" onClick={previousPage}>
+        <Button type="button" className="previous" onClick={prevPage}>
           Previous
         </Button>
         <Button onClick={this.logwiz}>log schema</Button>

@@ -18,7 +18,7 @@ router.route('/auth/sign_in')
 
 router.route('/database')
   .get(dbHandlers.all)
-  .post(userHandlers.verifyUser, dbHandlers.schema);
+  .post(dbHandlers.schema);
 
 router.route('/database/:userId')
   .post(dbHandlers.insertDb)

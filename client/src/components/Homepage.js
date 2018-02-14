@@ -11,7 +11,7 @@ class Homepage extends Component {
   
   render () {
   return (
-    <Segment>
+    <Segment >
       <Grid> 
       <Grid.Row centered textAlign='center'>
        <Segment>
