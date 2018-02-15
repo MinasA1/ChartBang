@@ -1,8 +1,9 @@
 import React from 'react'
-import { Icon, Image, Segment, Step } from 'semantic-ui-react'
+import {Container, Icon, Image, Segment, Step } from 'semantic-ui-react'
 
 const WizardSteps = (props) => (
-    <Step.Group attached='top'>
+    <Segment >
+    <Step.Group >
     <Step
     disabled={props.page != 1}
     active={props.page === 1}>
@@ -31,6 +32,7 @@ const WizardSteps = (props) => (
       </Step.Content>
     </Step>
   </Step.Group>
+  </Segment>
 )
 
 export default WizardSteps

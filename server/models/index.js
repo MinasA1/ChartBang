@@ -5,3 +5,4 @@ mongoose.Promise = Promise;
 
 module.exports.User = require('./user');
 module.exports.Database = require('./database');
+module.exports.Chart = require('./chart');

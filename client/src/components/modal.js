@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Header, Icon, Image, Modal, Menu } from 'semantic-ui-react'
+import {Segment, Button, Header, Icon, Image, Modal, Menu } from 'semantic-ui-react'
 import Wizard from '../containers/Wizard'
 
 const ModalWizard = () => (
@@ -9,7 +9,12 @@ const ModalWizard = () => (
   closeOnDimmerClick={false}
   style={{width:800, height:400}}
   >
-    <Wizard />
+  <Modal.Content scrolling>
+    <Modal.Description>
+        <Header></Header>
+      </Modal.Description>
+      <Wizard />      
+  </Modal.Content>    
   </Modal>
 )
 

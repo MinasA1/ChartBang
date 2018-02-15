@@ -3,7 +3,6 @@ const SeqAuto = require('sequelize-auto');
 const {Database, User} = require('../models');
 const Sequelize = require('sequelize')
 
-
 async function saveDb(dbInfo, user) {
 
     db = await Database.find({name: dbInfo.name})
@@ -19,7 +18,20 @@ async function saveDb(dbInfo, user) {
     }
 }
 
-
+exports.findSchema = async function (req, res) {
+    console.log(req.body, 'BODY')
+    let db = await Database.findOne({name: req.body.name})
+    console.log(db)
+    auto = getSchema(db)
+    auto.run(async function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: err.errmsg
+            });
+        }
+        return res.json(schemaToJSON(auto.tables))  
+    })
+}
 
 exports.schema = async function (req, res) {
     console.log(req.body)

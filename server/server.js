@@ -1,3 +1,4 @@
+require('babel-register');
 const express = require('express');
 let routes = require('./routes/routes');
 const bodyParser = require('body-parser');

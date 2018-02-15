@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Grid, Container, Segment, Button, Form, Checkbox } from 'semantic-ui-react'
+import {Label, Grid, Container, Segment, Button, Form, Checkbox } from 'semantic-ui-react'
 import validate from './validate'
 import renderField from './renderField'
 import renderSelector from './renderSelector'
@@ -25,20 +25,21 @@ const WizardFormFirstPage = props => {
     conns.push(i.name)
   }
   const myHandleSubmit = () => {
-    if (conn) {
-    readDB(conn)
-    setPage(3)
+    if (conn && !checked) {
+      readDB({name: conn})
+      setPage(3)
     } else {
     handleSubmit()
     }
 
   }
   return (
-    <Segment style={{
+    <Container style={{
       display: 'flex',
       justifyContent: 'center',
-      textAlign: 'center'}}>
-      <Form onSubmit={handleSubmit}    >
+      textAlign: 'center'}}
+      >
+      <Form onSubmit={myHandleSubmit}    >
       <h4>Choose Connection:</h4>
         
        {checked ?
@@ -80,9 +81,8 @@ const WizardFormFirstPage = props => {
         </Form.Field>
         </Grid>
         <br />
-
       </Form>
-    </Segment>  
+    </Container>  
   );
 };
 

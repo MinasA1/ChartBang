@@ -11,12 +11,13 @@ export const loadSchema = () => {
   }
 };
 
+
 const data = (state=[], action) => {
   switch(action.type) {
     case "LOAD_DATA":
-      return [...action.messages];
+      return [...action.schemas];
     case "ADD_DATA":
-      return [action.message, ...state];
+      return [action.schema, ...state];
     case 'SET_SCHEMA':
       saveSchema(action.schema);
       return {...action.schema};

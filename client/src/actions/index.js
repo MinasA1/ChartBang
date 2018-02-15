@@ -31,6 +31,16 @@ export const toggleSidebar = () => ({
   type: 'TOGGLE'
 })
 
+export const loadCharts = (charts) => ({
+  type: 'LOAD_CHARTS',
+  charts
+})
+
+export const addChart = (chart) => ({
+  type: 'ADD_CHART',
+  chart
+})
+
 // REUQESTS
 const authRequest = (userCredentials, url) => {
   return fetch(url, {
@@ -57,7 +67,7 @@ const authRequest = (userCredentials, url) => {
   });
 }
 
-const getSchema = (options, url) => {
+const postRequest = (options, url) => {
   return fetch(url, {
     method: 'POST',
     credentials: 'include',
@@ -101,9 +111,16 @@ const schemaRequest = (options, url) => {
     }
     return res.json()
   })
-
 }
 
+const getRequest = (url) => (
+  dispatch => (
+    fetch(url, {
+      method: 'GET',
+      credentials: 'include',
+    }).then(res => res.json())
+  )
+)
 // DISPATCHERS
 
 export const signUp = (authInfo) => (
@@ -122,17 +139,31 @@ export const signIn = (authInfo) => (
 
 export const submitDb = (dbOptions) => (
   (dispatch, getState) => (
-    getSchema(dbOptions, api + 'database/')
+    postRequest(dbOptions, api + 'database/')
       .then(schema => dispatch(setSchema(schema)))
   )
 );
 
 export const readSchema = (options) => (
   (dispatch, getState) => (
-    schemaRequest(options, api + 'database/')
+    postRequest(options, api + 'database/get')
+      .then(schema => dispatch(setSchema(schema)))
   )
 )
 
+export const createChart = (options) => (
+  (dispatch, getState) => (
+    postRequest(options, api + 'charts/create')
+      .then(chart => dispatch(addChart(chart)))
+  )
+)
+
+export const fetchCharts = (options) => (
+  (dispatch, getState) => (
+    getRequest(options, api + 'charts/')
+      .then(charts => dispatch(loadCharts(charts)))
+  )
+)
 //helpers
 
 const chartDataGen = (table) => {
