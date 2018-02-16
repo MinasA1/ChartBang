@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Dashboard from './Dashboard';
 import {Container, Segment, Grid, Popup, Button} from 'semantic-ui-react';
-import ChartItem from '../components/ChartItem'
+import ChartItem from '../components/Charts/ChartsHome'
 
 class Homepage extends Component {
   constructor(props) {

@@ -23,12 +23,13 @@ class Main extends Component {
     newMessage(text).then(() => {
       history.push('/');
     });
-  }
+  }             
 
   render() {
     const {
       user,
-      authErrorMessage,
+      chartData,
+      authErrorMessage, 
       handleSignIn,
       handleSignUp,
       handledbSubmit,
@@ -61,6 +62,7 @@ class Main extends Component {
             exact path='/Dashboard'
             render={(props) => (
               <Dashboard
+                chartData={chartData}
                 toggleSidebar={toggleSidebar}
                 user={user}
                 onCredentials={(dbOptions) => handledbSubmit(dbOptions).then(() => console.log('SubmitedCred'))}
@@ -77,6 +79,7 @@ class Main extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
+  chartData: state.charts[0],
   visible: state.sidebar,
   authErrorMessage: state.errorMessage,
   wizard: state.form.wizard

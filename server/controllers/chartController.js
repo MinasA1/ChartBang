@@ -12,6 +12,10 @@ exports.addChart = async function (req, res) {
         operatorsAliases: false,
         timestamps: false
     })
+    /* let fields = []
+    for (let i of req.body.datasets) {
+        fields.push(i.labelsField)
+    } */
     let labelsRes = await sequelize.query(`SELECT ${req.body.xField} FROM ${req.body.xTable}`)
     //console.log(Object.keys(labelsRes[1]),'RES')
     let labels = []
@@ -26,7 +30,7 @@ exports.addChart = async function (req, res) {
         let dataRes = await sequelize.query(`SELECT ${i.labelsField} FROM ${i.labelsTable}`)
         let data = []
         for (let j of dataRes[1]){
-            console.log(j[i.labelsField])
+            //console.log(j[i.labelsField])
             data.push(j[i.labelsField])
         }
         datasets.push({data: data, label: i.labelsTable, backgroundColor: i.color})

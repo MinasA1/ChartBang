@@ -3,7 +3,7 @@ const charts = (state=[], action) => {
       case 'LOAD_CHARTS':
         return [...action.charts]
       case 'ADD_CHART':
-        return [action.chart, ...state]
+        return [...state, action.chart]
       default:
         return state
     }

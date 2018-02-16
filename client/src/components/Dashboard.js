@@ -1,7 +1,7 @@
 import React from "react";
 import Container, { Dropdown, Icon, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
 import Wizard from '../containers/Wizard';
-import ChartLine from './ChartCanvas'
+import ChartLine from './Charts/ChartsDash'
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
   toggleVisibility = () => this.setState({ 'visible': !this.state.visible })
   
   render() {
-    const {user, visible, toggleSidebar} = this.props
+    const {user, visible, toggleSidebar, chartData} = this.props
     if(user) {
       console.log(user);
     }
@@ -39,8 +39,8 @@ class Dashboard extends React.Component {
           </Sidebar>
           <Sidebar.Pusher>
             <Segment basic>
-              <Header as='h3'>Application Content</Header>
-              <ChartLine />
+              <Header textAlign='center' as='h3'>My Dashboard</Header>
+              <ChartLine data={chartData}/>
             </Segment>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
