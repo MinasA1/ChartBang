@@ -5,7 +5,7 @@ import * as actions from '../actions';
 import AuthForm from '../components/AuthForm';
 import Homepage from '../components/Homepage';
 import Dashboard from '../components/Dashboard';
-import {Container} from 'semantic-ui-react';
+//import {Container} from 'semantic-ui-react';
 
 
 class Main extends Component {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Segment, Container, Input, Button, Form} from 'semantic-ui-react';
+import { Container,Button, Form} from 'semantic-ui-react';
 import './AuthForm.css'
 class AuthForm extends Component {
   static defaultProps = { 
@@ -35,10 +35,10 @@ class AuthForm extends Component {
   render() {
     const {email, name, password} = this.state;
     const {signIn, heading, buttonText, errorMessage} = this.props;
-    const style = {
-      display: 'flex',
-      allignItems: 'center'
-    }
+    // const style = {
+    //   display: 'flex',
+    //   allignItems: 'center'
+    // }
     if (signIn) {
       return (
         <Container style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}>

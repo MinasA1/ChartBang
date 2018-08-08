@@ -1,6 +1,6 @@
 import React from "react";
-import Container, { Dropdown, Icon, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
-import Wizard from '../containers/Wizard';
+import {Icon, Menu, Segment, Sidebar, Header,} from 'semantic-ui-react';
+//import Wizard from '../containers/Wizard';
 import ChartLine from './Charts/ChartsDash'
 
 class Dashboard extends React.Component {
@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
   toggleVisibility = () => this.setState({ 'visible': !this.state.visible })
   
   render() {
-    const {user, visible, toggleSidebar, chartData} = this.props
+    const {user, visible, chartData} = this.props
     if(user) {
       console.log(user);
     }

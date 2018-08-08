@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
-import { Dropdown, Icon, Menu, Segment, Button } from 'semantic-ui-react';
+import {Icon, Menu} from 'semantic-ui-react';
 import ModalWizard from './modal';
 
 const Navbar = props => {

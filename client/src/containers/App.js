@@ -4,7 +4,6 @@ import {withRouter} from 'react-router-dom';
 import * as actions from '../actions';
 import Main from './Main';
 import Navbar from '../components/Navbar';
-import SideBar from '../components/Sidebar'
 
 const App = ({
   user,

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Segment, Button, Header, Icon, Image, Modal, Menu } from 'semantic-ui-react'
+import {Header, Icon,Modal, Menu } from 'semantic-ui-react'
 import Wizard from '../containers/Wizard'
 
 const ModalWizard = () => (

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Bar, Line, Pie } from 'react-chartjs-2'
-import { Segment, Grid, Item } from 'semantic-ui-react';
+import { Segment, Grid,} from 'semantic-ui-react';
 
 const chartData = {
     labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],

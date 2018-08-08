@@ -92,26 +92,26 @@ const postRequest = (options, url) => {
   });
 }
 
-const schemaRequest = (options, url) => {
-  url = url + ''
-  return fetch(url, {
-    method: 'GET',
-    credentials: 'include',
-  }).then(res => {
-    if (!res.ok) {
-      if (res.status >= 400 && res.status < 500) {
-        return res.json().then(data => {
-          let err = { ErrorMessage: data.message };
-          throw err;
-        })
-      } else {
-        let err = { ErrorMessage: "Please try again later.  Server not responding." };
-        throw err;
-      }
-    }
-    return res.json()
-  })
-}
+// const schemaRequest = (options, url) => {
+//   url = url + ''
+//   return fetch(url, {
+//     method: 'GET',
+//     credentials: 'include',
+//   }).then(res => {
+//     if (!res.ok) {
+//       if (res.status >= 400 && res.status < 500) {
+//         return res.json().then(data => {
+//           let err = { ErrorMessage: data.message };
+//           throw err;
+//         })
+//       } else {
+//         let err = { ErrorMessage: "Please try again later.  Server not responding." };
+//         throw err;
+//       }
+//     }
+//     return res.json()
+//   })
+// }
 
 const getRequest = (url) => (
   dispatch => (
@@ -166,26 +166,26 @@ export const fetchCharts = (options) => (
 )
 //helpers
 
-const chartDataGen = (table) => {
-  let labels = [];
-  let data = [];
+// const chartDataGen = (table) => {
+//   let labels = [];
+//   let data = [];
 
-  for (let i in data) {
-    labels.push("Player " + data[i].playerid);
-    data.push(data[i].score);
-  }
+//   for (let i in data) {
+//     labels.push("Player " + data[i].playerid);
+//     data.push(data[i].score);
+//   }
 
-  let chartdata = {
-    labels: labels,
-    datasets: [
-      {
-        label: 'Player Score',
-        backgroundColor: 'rgba(200, 200, 200, 0.75)',
-        borderColor: 'rgba(200, 200, 200, 0.75)',
-        hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
-        hoverBorderColor: 'rgba(200, 200, 200, 1)',
-        data: data
-      }
-    ]
-  };
-}
+//   let chartdata = {
+//     labels: labels,
+//     datasets: [
+//       {
+//         label: 'Player Score',
+//         backgroundColor: 'rgba(200, 200, 200, 0.75)',
+//         borderColor: 'rgba(200, 200, 200, 0.75)',
+//         hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+//         hoverBorderColor: 'rgba(200, 200, 200, 1)',
+//         data: data
+//       }
+//     ]
+//   };
+// }
