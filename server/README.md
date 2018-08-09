@@ -1,5 +1,8 @@
-## API starter
+## ChartBang API (WIP)
 
-#### This is a basic api template with user creation , authentication and removal.
+### Includes user authentication, database reader and schema serializer.
 
+#### Install mongodb
 #### To use it type 'npm install' and then 'npm start'
+
+
