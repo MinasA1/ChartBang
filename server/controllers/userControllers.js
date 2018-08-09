@@ -1,6 +1,6 @@
 const mongoose = require('mongoose'),
   jwt = require('jsonwebtoken'),
-  bcrypt = require('bcrypt'),
+  bcrypt = require('bcrypt-nodejs'),
   { User } = require('../models'),
   secureRandom = require('secure-random');
 
@@ -9,7 +9,7 @@ var token;
 
 exports.sign_up = function(req, res) {
   let newUser = new User(req.body);
-  newUser.password = bcrypt.hashSync(req.body.password, 10);
+  newUser.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
   newUser.save(function(err, user) {
     if (err) {
       return res.status(400).send({
