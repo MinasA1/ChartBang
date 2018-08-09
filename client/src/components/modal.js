@@ -6,7 +6,7 @@ const ModalWizard = () => (
   <Modal 
   closeIcon
   trigger={<Menu.Item><Icon name='magic' /></Menu.Item>}
-  closeOnDimmerClick={false}
+  closeOnDimmerClick={true}
   style={{width:800, height:400}}
   >
   <Modal.Content scrolling>

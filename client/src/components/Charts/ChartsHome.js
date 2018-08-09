@@ -3,17 +3,17 @@ import { Bar, Line, Pie } from 'react-chartjs-2'
 import { Segment, Grid,} from 'semantic-ui-react';
 
 const chartData = {
-    labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+    labels: ['San Francisco', 'Los Angeles', 'San Diego', 'San Jose', 'Fresno', 'Sacramento'],
     datasets: [
         {
             label: 'Population',
             data: [
-                617594,
-                181045,
-                153060,
-                106519,
-                105162,
-                95072
+                870887,
+                3971883,
+                1407000,
+                1026908,
+                527438,
+                490712
             ],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.6)',
@@ -39,7 +39,7 @@ class Chart extends Component {
         displayTitle: true,
         displayLegend: true,
         legendPosition: 'right',
-        location: 'Massachusetts'
+        location: 'California'
     }
 
     render() {
