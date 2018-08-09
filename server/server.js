@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 //  res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept,X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
 //  next();
 //});
-app.use(cors({ origin: 'http://localhost:3001', credentials: true }));
-app.use('/api/v1', routes);
+app.use(cors({ origin: 'https://chartbang.com', credentials: true }));
+app.use('/v1', routes);
 
 app.listen(process.env.PORT || 3000, function(){
     console.log("App running on port 3000");
